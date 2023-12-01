@@ -1,0 +1,11 @@
+.header {
+  text-align: center;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+}
+.intro__heading {
+  text-align: center;
+}

@@ -1,0 +1,14 @@
+@use "./variables" as *;
+@use "./start";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+body {
+    background-color: $background-color;
+    font-family: $font-body;
+}
