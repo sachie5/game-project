@@ -14,8 +14,9 @@
   </head>
   <body>
     <script type="module" src="/src/main.ts"></script>
-    <header>
-      <h1 class="header">Quiz Game</h1>
+    <header class="header">
+      <h1 class="header__name">Quiz Game</h1>
+      <h1 class="header__player">Player score:</h1>
     </header>
     <main class="quiz">
       <div class="quiz__container">
@@ -32,7 +33,7 @@
           quiz based on the Year 6 Curriculum and see how well you do!
         </p>
         <p class="quiz__container--text">Press start to commence the quiz</p>
-        <button class="quiz__container--button" id="start">Start</button>
+        <button type="button" class="quiz__container--button" id="start">Start</button>
       </div>
     </main>
   </body>

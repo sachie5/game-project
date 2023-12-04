@@ -1,13 +1,15 @@
 .header {
   text-align: center;
   padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
 }
 
 .quiz {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
 }
 .quiz__container {
   height: 80vh;
@@ -21,17 +23,17 @@
 }
 .quiz__container--heading {
   text-align: center;
-  padding: 10px;
-  font-size: 26px;
+  width: 15em;
+  font-size: 20px;
+  text-wrap: wrap;
 }
 .quiz__container--image {
-  width: 400px;
-  padding: 40px 0;
+  width: 300px;
+  padding: 10px;
 }
 .quiz__container--text {
   text-align: center;
   padding: 20px;
-  font-size: 18px;
 }
 .quiz__container--button {
   width: 10vw;
@@ -39,10 +41,47 @@
   border-radius: 10px;
   background-color: white;
   color: #2274A5;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: center;
-  font-size: 14px;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+}
+.questions--category {
+  text-align: center;
+  justify-content: flex-start;
+}
+.questions--question {
+  text-align: center;
+}
+
+.answers__container {
+  display: grid;
+  grid-template-areas: "option1 option2" "option3 option4";
+  justify-content: space-around;
+  gap: 15px;
+}
+.answers__container--options {
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 30px;
+  background-color: #FFF275;
+}
+.answers__container--option1 {
+  grid-area: option1;
+  padding: 10px;
+}
+.answers__container--option2 {
+  grid-area: option2;
+}
+.answers__container--option3 {
+  grid-area: option3;
+}
+.answers__container--option4 {
+  grid-area: option4;
 }
 
 * {

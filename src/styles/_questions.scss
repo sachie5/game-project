@@ -1,0 +1,52 @@
+@use "./variables" as *;
+
+.questions{
+    display: flex;
+    flex-direction: column;
+
+
+    &--category{
+        text-align: center;
+        justify-content: flex-start;
+    }
+
+    &--question{
+        text-align: center;
+    }
+
+}
+
+
+.answers__container {
+    display: grid;
+    grid-template-areas: 
+    "option1 option2"
+    "option3 option4";
+    justify-content: space-around;
+    gap: 15px;
+
+    &--options{
+        border: 1px solid white;
+        padding: 10px;
+        border-radius: 30px;
+        background-color: $background-color;
+    }
+
+    &--option1{
+        grid-area: option1;
+        padding: 10px;
+    }
+
+    &--option2{
+        grid-area: option2;
+    }
+
+    &--option3{
+        grid-area: option3;
+    }
+
+    &--option4{
+        grid-area: option4;
+    }
+
+}

@@ -1,4 +1,4 @@
-type Quiz = {
+export type Quiz = {
   ID: number;
   category: string;
   question: string;
@@ -7,16 +7,21 @@ type Quiz = {
 
 type Answers = { answer: string; correctIncorrect: string };
 
-const quizQuestions: Quiz[] = [
+export enum CorrectIncorrect {
+  CORRECT = "correct",
+  INCORRECT = "incorrect",
+}
+
+export const quizQuestions: Quiz[] = [
   {
     ID: 1,
     category: "Grammar",
     question: "Which of these is a noun?",
     answers: [
-      { answer: "throw", correctIncorrect: "incorrect" },
-      { answer: "happiness", correctIncorrect: "correct" },
-      { answer: "happily", correctIncorrect: "incorrect" },
-      { answer: "beautiful", correctIncorrect: "incorrect" },
+      { answer: "throw", correctIncorrect: CorrectIncorrect.INCORRECT },
+      { answer: "happiness", correctIncorrect: CorrectIncorrect.CORRECT },
+      { answer: "happily", correctIncorrect: CorrectIncorrect.INCORRECT },
+      { answer: "beautiful", correctIncorrect: CorrectIncorrect.INCORRECT },
     ],
   },
   {
@@ -25,10 +30,10 @@ const quizQuestions: Quiz[] = [
     question:
       "Choose the correct conjunction: _____ I am short, I can reach the top of my wardrobe.",
     answers: [
-      { answer: "although", correctIncorrect: "correct" },
-      { answer: "until", correctIncorrect: "incorrect" },
-      { answer: "because", correctIncorrect: "incorrect" },
-      { answer: "but", correctIncorrect: "incorrect" },
+      { answer: "although", correctIncorrect: CorrectIncorrect.CORRECT },
+      { answer: "until", correctIncorrect: CorrectIncorrect.INCORRECT },
+      { answer: "because", correctIncorrect: CorrectIncorrect.INCORRECT },
+      { answer: "but", correctIncorrect: CorrectIncorrect.INCORRECT },
     ],
   },
   {
@@ -36,10 +41,19 @@ const quizQuestions: Quiz[] = [
     category: "Grammar",
     question: "What is a verb?",
     answers: [
-      { answer: "name, place or thing", correctIncorrect: "incorrect" },
-      { answer: "describes a noun", correctIncorrect: "incorrect" },
-      { answer: "an action", correctIncorrect: "correct" },
-      { answer: "describes a verb", correctIncorrect: "incorrect" },
+      {
+        answer: "name, place or thing",
+        correctIncorrect: CorrectIncorrect.INCORRECT,
+      },
+      {
+        answer: "describes a noun",
+        correctIncorrect: CorrectIncorrect.INCORRECT,
+      },
+      { answer: "an action", correctIncorrect: CorrectIncorrect.CORRECT },
+      {
+        answer: "describes a verb",
+        correctIncorrect: CorrectIncorrect.INCORRECT,
+      },
     ],
   },
   {
@@ -47,15 +61,21 @@ const quizQuestions: Quiz[] = [
     category: "Grammar",
     question: "Which sentence is a command?",
     answers: [
-      { answer: "I just love doughnuts.", correctIncorrect: "incorrect" },
+      {
+        answer: "I just love doughnuts.",
+        correctIncorrect: CorrectIncorrect.INCORRECT,
+      },
       {
         answer: "Will you be coming round for the tea later?",
-        correctIncorrect: "incorrect",
+        correctIncorrect: CorrectIncorrect.INCORRECT,
       },
-      { answer: "Pick up the cup.", correctIncorrect: "correct" },
+      {
+        answer: "Pick up the cup.",
+        correctIncorrect: CorrectIncorrect.CORRECT,
+      },
       {
         answer: "London is the south of London.",
-        correctIncorrect: "incorrect",
+        correctIncorrect: CorrectIncorrect.INCORRECT,
       },
     ],
   },
@@ -64,10 +84,10 @@ const quizQuestions: Quiz[] = [
     category: "Grammar",
     question: "Which is a synonym of the word 'depressing'?",
     answers: [
-      { answer: "decreasing", correctIncorrect: "incorrect" },
-      { answer: "gloomy", correctIncorrect: "correct" },
-      { answer: "lowering", correctIncorrect: "incorrect" },
-      { answer: "pushing", correctIncorrect: "incorrect" },
+      { answer: "decreasing", correctIncorrect: CorrectIncorrect.INCORRECT },
+      { answer: "gloomy", correctIncorrect: CorrectIncorrect.CORRECT },
+      { answer: "lowering", correctIncorrect: CorrectIncorrect.INCORRECT },
+      { answer: "pushing", correctIncorrect: CorrectIncorrect.INCORRECT },
     ],
   },
 ];
