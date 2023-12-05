@@ -16,6 +16,7 @@ const question = document.querySelector<HTMLHeadingElement>(
 const answers = document.querySelectorAll<HTMLButtonElement>(
   ".answers__container--options"
 );
+const homeButtton = document.querySelector<HTMLButtonElement>(".header__start")
 
 if (
   !startButton ||
@@ -24,7 +25,8 @@ if (
   !questionPage ||
   !questionCategory ||
   !question ||
-  !answers
+  !answers ||
+  !homeButtton
 ) {
   throw new Error("Issue with selector");
 }
@@ -61,7 +63,7 @@ const checkAnswers = (event: Event) => {
         if(answersArray[index].correctIncorrect === "Correct"){
       console.log(answersArray[index].correctIncorrect);
       buttonClicked.style.backgroundColor = "green";
-      playerScoreInput.innerText = ` ${(score += 1)}`;
+      playerScoreInput.innerText = `Player score:  ${(score += 1)}`;
     } else {
       buttonClicked.style.backgroundColor = "red";
     }
@@ -97,14 +99,14 @@ const nextQuestion = () => {
   return;
   } 
 }
-  
-
-  
- 
-
-
-
-;
-
-
 nextButton.addEventListener("click", nextQuestion);
+
+//Home button
+
+const restartQuiz = () => {
+  startPage.style.display = "flex";
+  questionPage.style.display = "none";
+  playerScoreInput.innerText = `Player score: `;
+}
+
+homeButtton.addEventListener("click", restartQuiz)

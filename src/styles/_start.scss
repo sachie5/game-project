@@ -4,8 +4,21 @@
     text-align: center;
     padding: 20px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 8px;
+
+    &__start {
+        width: 20vw;
+        border: 2px solid $quiz-background;
+        border-radius: 10px;
+        background-color: white;
+        color: $quiz-background;
+        padding: 10px;
+    }
+
+    &__player{
+        width: 30vw;
+    }
 }
 
 .quiz {

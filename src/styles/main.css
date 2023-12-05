@@ -2,8 +2,19 @@
   text-align: center;
   padding: 20px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 8px;
+}
+.header__start {
+  width: 20vw;
+  border: 2px solid #2274A5;
+  border-radius: 10px;
+  background-color: white;
+  color: #2274A5;
+  padding: 10px;
+}
+.header__player {
+  width: 30vw;
 }
 
 .quiz {
