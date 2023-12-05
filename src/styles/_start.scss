@@ -18,7 +18,8 @@
 
     &__player{
         width: 30vw;
-        font-size: 20px;
+        font-size: 12px;
+        align-self: center;
     }
 }
 
@@ -28,10 +29,10 @@
     justify-content: center;
 
     &__container {
-        height: 85vh;
+        height: 82vh;
         width: 80vw;
         background-color: $quiz-background;
-        border-radius: 50px;
+        border-radius: 25px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -40,19 +41,19 @@
         &--heading {
             text-align: center;
             width: 15em;
-            font-size: 30px;
+            font-size: 18px;
             text-wrap: wrap;
         }
 
         &--image {
-            width: 20rem;
+            width: 12rem;
             padding: 10px;
         }
 
         &--text {
             text-align: center;
-            padding: 20px;
-            font-size: 24px;
+            padding: 10px;
+            font-size: 16px;
         }
 
         &--button {
@@ -65,8 +66,7 @@
             border-radius: 10px;
             background-color: white;
             color: $background-color;
-            font-size: 20px;
-            padding: 10px;
+            font-size: 16px;
             display: flex;
             
         }

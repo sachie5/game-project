@@ -4,15 +4,16 @@
     height: 80vh;
         width: 80vw;
         background-color: $quiz-background;
-        border-radius: 50px;
+        border-radius: 10px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
         &--button{
-        width: 20vw;
+        display: inline-block;
+        width: 30vw;
         height: 7vh;
-        font-size: 16px;
+        font-size: 12px;
         border: 2px solid $background-color;
         border-radius: 10px;
         background-color: white;
@@ -25,18 +26,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 30%;
+    height: 25%;
 
 
     &--category{
         text-align: center;
         justify-content: flex-start;
-        font-size: 40px;
+        font-size: 24px;
     }
 
     &--question{
         text-align: center;
-        font-size: 30px;
+        font-size: 18px;
     }
 
 }
@@ -49,18 +50,18 @@
     "option3 option4";
     gap: 20px;
     justify-content: space-around;
-    padding: 10px;
-    height:30vh;
+    padding: 5px;
+    height:33vh;
 
     &--options{
         display: inline-block;
-        height: 10vh;
-        width: 30vw;
+        height: 12vh;
+        width: 35vw;
         border: 1px solid white;
         padding: 5px;
         border-radius: 15px;
         background-color: $answer-color;
-        font-size: 20px;
+        font-size: 14px;
     }
 
     &--option1{
@@ -85,5 +86,5 @@
 .quiz__timer {
     font-size: 24px;
     text-align: center;
-    padding: 30px 0;
+    padding: 20px 0;
 }
