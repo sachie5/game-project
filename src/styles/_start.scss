@@ -31,7 +31,7 @@
         }
 
         &--image {
-            width: 300px;
+            width: 12rem;
             padding: 10px;
         }
 
@@ -51,4 +51,8 @@
             justify-content: center;
         }
     }
+}
+
+.pages__container{
+    display: none;
 }
