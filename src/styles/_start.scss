@@ -9,15 +9,16 @@
 
     &__start {
         width: 20vw;
-        border: 2px solid $quiz-background;
+        border: 2px solid $background-color;
         border-radius: 10px;
         background-color: white;
-        color: $quiz-background;
+        color: $background-color;
         padding: 10px;
     }
 
     &__player{
         width: 30vw;
+        font-size: 20px;
     }
 }
 
@@ -27,45 +28,55 @@
     justify-content: center;
 
     &__container {
-        height: 80vh;
+        height: 85vh;
         width: 80vw;
         background-color: $quiz-background;
         border-radius: 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
 
         &--heading {
             text-align: center;
             width: 15em;
-            font-size: 20px;
+            font-size: 30px;
             text-wrap: wrap;
         }
 
         &--image {
-            width: 12rem;
+            width: 20rem;
             padding: 10px;
         }
 
         &--text {
             text-align: center;
             padding: 20px;
+            font-size: 24px;
         }
 
         &--button {
-            width: 10vw;
-            border: 2px solid $quiz-background;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20vw;
+            height: 10vh;
+            border: 2px solid $background-color;
             border-radius: 10px;
             background-color: white;
-            color: $quiz-background;
+            color: $background-color;
+            font-size: 20px;
             padding: 10px;
             display: flex;
-            justify-content: center;
+            
         }
     }
 }
 
 .pages__container{
+    display: none;
+}
+
+.category__container{
     display: none;
 }

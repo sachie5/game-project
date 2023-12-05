@@ -1,7 +1,7 @@
 export type Quiz = {
-  ID: number;
-  category: string;
-  question: string;
+  ID: Number;
+  category: String;
+  question: String;
   answers: Answers[];
 };
 
@@ -12,7 +12,7 @@ type Answers = { answer: string; correctIncorrect: string };
   INCORRECT = "incorrect",
 } */
 
-export const quizQuestions: Quiz[] = [
+export let quizQuestions: Quiz[] = [
   {
     ID: 1,
     category: "Grammar",
@@ -91,3 +91,83 @@ export const quizQuestions: Quiz[] = [
     ],
   },
 ];
+
+export let mathQuestions : Quiz[] = [
+{
+  ID: 1,
+  category: "Maths",
+  question: "What is 12 x 7?",
+  answers: [
+    { answer: "84", correctIncorrect: "Correct" },
+    { answer: "86", correctIncorrect: "Incorrect" },
+    { answer: "72", correctIncorrect: "Incorrect" },
+    { answer: "79", correctIncorrect: "Incorrect" },
+  ],
+},
+{
+  ID: 2,
+  category: "Maths",
+  question:
+    "How many minutes in 4 and a half hours? ",
+  answers: [
+    { answer: "360 minutes", correctIncorrect: "Incorrect" },
+    { answer: "420 minutes", correctIncorrect: "Incorrect" },
+    { answer: "270 minutes", correctIncorrect: "Correct" },
+    { answer: "300 minutes", correctIncorrect: "Incorrect" },
+  ],
+},
+{
+  ID: 3,
+  category: "Maths",
+  question: "What is 234, 875 rounded to the nearest thousand?",
+  answers: [
+    {
+      answer: "200,000",
+      correctIncorrect: "Incorrect",
+    },
+    {
+      answer: "4,000",
+      correctIncorrect: "Incorrect",
+    },
+    { answer: "30,000", correctIncorrect: "Incorrect" },
+    {
+      answer: "5,000",
+      correctIncorrect: "Correct",
+    },
+  ],
+},
+{
+  ID: 4,
+  category: "Maths",
+  question: "What is 3.4 + 0.06?",
+  answers: [
+    {
+      answer: "3.406",
+      correctIncorrect: "Incorrect",
+    },
+    {
+      answer: "3.66",
+      correctIncorrect: "Incorrect",
+    },
+    {
+      answer: "3.46",
+      correctIncorrect: "Correct",
+    },
+    {
+      answer: "3.64",
+      correctIncorrect: "Incorrect",
+    },
+  ],
+},
+{
+  ID: 5,
+  category: "Maths",
+  question: "What is 1000 x 0.73?",
+  answers: [
+    { answer: "730.3", correctIncorrect: "Incorrect" },
+    { answer: "730", correctIncorrect: "Correct" },
+    { answer: "73", correctIncorrect: "Incorrect" },
+    { answer: "7300", correctIncorrect: "Incorrect" },
+  ],
+},
+]

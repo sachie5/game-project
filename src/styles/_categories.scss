@@ -1,0 +1,40 @@
+@use "./variables" as *;
+
+.category__container {
+    height: 80vh;
+    width: 80vw;
+    background-color: $quiz-background;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &--choice{
+        display: inline-block;
+        height: 15vh;
+        width: 50vw;
+        padding: 5px;
+        border-radius: 15px;
+        font-size: 35px;
+    }
+
+    &--button {
+        height: 10vh;
+        width: 30vw;
+        padding: 5px;
+        border-radius: 15px;
+        font-size: 24px;
+    }
+}
+
+#grammar{
+    background-color: $grammar-color;
+}
+
+#maths{
+    background-color: $maths-color;
+}
+.begin{
+    display: flex;
+    justify-content: center;
+}
