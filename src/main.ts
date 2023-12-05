@@ -16,7 +16,8 @@ const question = document.querySelector<HTMLHeadingElement>(
 const answers = document.querySelectorAll<HTMLButtonElement>(
   ".answers__container--options"
 );
-const homeButtton = document.querySelector<HTMLButtonElement>(".header__start")
+const homeButtton = document.querySelector<HTMLButtonElement>(".header__start");
+const quizTimer = document.querySelector<HTMLParagraphElement>(".quiz__timer");
 
 if (
   !startButton ||
@@ -26,13 +27,40 @@ if (
   !questionCategory ||
   !question ||
   !answers ||
-  !homeButtton
+  !homeButtton ||
+  !quizTimer
 ) {
   throw new Error("Issue with selector");
 }
 //Player Count
 let score = 0;
-let questionIndex = 0;
+let questionIndex = 0 /*  Math.floor(Math.random() * 5) */;
+let counter = 15;
+let timeStop = false;
+let timer = 0;
+
+
+
+//Timer 
+const countDown = () => { 
+ if(!timeStop) {
+  timer = setInterval(() => {
+   quizTimer.innerHTML = `${counter} seconds`;
+    counter--;
+    if (counter < 0) {
+      clearInterval(timer);
+      answers.forEach(answer => {
+        answer.disabled = true;
+      })
+      timeStop = true; 
+    }
+  }, 1000);
+} else {
+  clearInterval(timer);
+}
+}
+
+
 
 //Start Quiz
 const startQuiz = () => {
@@ -41,18 +69,19 @@ const startQuiz = () => {
   //Filling question correctly
   startPage.style.display = "none";
   questionPage.style.display = "flex";
-
   questionCategory.innerText = `${quizQuestions[questionIndex].category}`;
   question.innerText = `${quizQuestions[questionIndex].question}`;
   let currentQuestion = quizQuestions[questionIndex].answers;
 
+
   answers.forEach((answer, i) => {
     answer.innerText = `${currentQuestion[i].answer}`;
   });
-  console.log(questionIndex);
+  countDown();
 };
 
-startButton.addEventListener("click", startQuiz);
+startButton.addEventListener("click", startQuiz)
+
 
 //Checking answers
 const checkAnswers = (event: Event) => {
@@ -64,15 +93,25 @@ const checkAnswers = (event: Event) => {
       console.log(answersArray[index].correctIncorrect);
       buttonClicked.style.backgroundColor = "green";
       playerScoreInput.innerText = `Player score:  ${(score += 1)}`;
+      counter = 0;
+      timeStop = true;
+      answers.forEach(answer => {
+        answer.disabled = true;
+      })
     } else {
       buttonClicked.style.backgroundColor = "red";
+      counter = 0;
+      timeStop = true;
+      answers.forEach(answer => {
+        answer.disabled = true;
+      })
     }
   }
 }
 }
 
 answers.forEach((answer) => {
-  answer.addEventListener("click", checkAnswers);
+  answer.addEventListener("click", checkAnswers)
 });
 
 //Next button
@@ -84,6 +123,8 @@ if (!nextButton) {
 
 
 const nextQuestion = () => {
+    counter = 15;
+    timeStop = false;
     questionIndex++;
     if(questionIndex < quizQuestions.length){
     questionCategory.innerText = `${quizQuestions[questionIndex].category}`;
@@ -93,9 +134,11 @@ const nextQuestion = () => {
     answers.forEach((answer, i) => {
       answer.style.backgroundColor = `#FFF275`;
       answer.innerText = `${currentQuestion[i].answer}`;
+      answer.disabled = false;
     });
+    countDown();
   } else {
-  console.log("End of Quiz!");
+  alert("End of Quiz!");
   return;
   } 
 }
@@ -107,6 +150,8 @@ const restartQuiz = () => {
   startPage.style.display = "flex";
   questionPage.style.display = "none";
   playerScoreInput.innerText = `Player score: `;
+  counter = 15;
 }
 
-homeButtton.addEventListener("click", restartQuiz)
+homeButtton.addEventListener("click", restartQuiz);
+
