@@ -44,18 +44,20 @@ if (
   throw new Error("Issue with selector");
 }
 
-const chooseCategory = () => {
-  startPage.style.display = "none";
-  categoryPage.style.display = "flex";
-};
-
 //Global variables
 let score: number = 0;
-let questionIndex: number = 0; /*  Math.floor(Math.random() * 5) */
+let questionIndex: number = 0; 
 let counter: number = 0;
 let timeStop: boolean = false;
 let timer: number = 0;
 let questionsArr: Quiz[] = [];
+
+
+//Showing category page from start
+const chooseCategory = () => {
+  startPage.style.display = "none";
+  categoryPage.style.display = "flex";
+};
 
 //Timer function
 const countDown = () => {
@@ -88,15 +90,6 @@ const startQuiz = (event: Event) => {
     questionsArr = [...mathQuestions];
   }
 
-/*   //Randomise array
-  const shuffleArray = (arr: Quiz []) => {
-    let randomArr = [...arr]
-    randomArr.sort((a, b) => 0.5 -(Math.random() * arr.length))
-    return randomArr;
-  };
-
-  shuffleArray(questionsArr);
- */
   //Score
   playerScoreInput.innerHTML += `<span class= score> ${score}</span>`;
 
@@ -155,6 +148,7 @@ if (!nextButton) {
 }
 
 const nextQuestion = () => {
+  //Timer
   timeStop = false;
   countDown();
   // Question display
@@ -170,10 +164,14 @@ const nextQuestion = () => {
       answer.disabled = false;
     });
   } else {
+    //Timer
     timeStop = true;
     counter = 0;
+    //Display
     questionPage.style.display = "none";
     endPage.style.display = "flex";
+    playerScoreInput.style.display = "none";
+    endPage.innerHTML += `<p class=quizEnd__text>${score}`;
     return;
   }
 };
@@ -183,6 +181,7 @@ const restartQuiz = () => {
   //Reset questions and styling
   startPage.style.display = "flex";
   questionPage.style.display = "none";
+  endPage.style.display = "none";
   playerScoreInput.innerText = `Player score: `;
   questionIndex = 0;
   questionsArr = [];
@@ -190,7 +189,10 @@ const restartQuiz = () => {
     answer.disabled = false;
     answer.style.backgroundColor = `#FFF275`;
   });
+  //Score
+  score = 0;
   //Timer reset
+  clearInterval(timer);
   timeStop = true;
   counter = 0;
   return;
