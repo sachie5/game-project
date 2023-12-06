@@ -1,4 +1,4 @@
-import "./styles/main.css";
+import "./styles/main.scss";
 import { Quiz, quizQuestions } from "./quizData";
 import { mathQuestions } from "./quizData";
 
@@ -24,6 +24,7 @@ const mathsCategory = document.querySelector<HTMLButtonElement>("#maths");
 const categoryPage = document.querySelector<HTMLElement>(
   ".category__container"
 );
+const endPage = document.querySelector<HTMLElement>(".quizEnd");
 
 if (
   !startButton ||
@@ -37,7 +38,8 @@ if (
   !quizTimer ||
   !grammarCategory ||
   !mathsCategory ||
-  !categoryPage
+  !categoryPage ||
+  !endPage
 ) {
   throw new Error("Issue with selector");
 }
@@ -170,7 +172,8 @@ const nextQuestion = () => {
   } else {
     timeStop = true;
     counter = 0;
-    alert("End of Quiz!");
+    questionPage.style.display = "none";
+    endPage.style.display = "flex";
     return;
   }
 };

@@ -1,0 +1,29 @@
+@use "./variables" as *;
+
+.quizEnd {
+        flex-direction: column;
+        height: 80vh;
+        width: 80vw;
+        background-color: $quiz-background;
+        border-radius: 10px;
+        padding: 20px;
+
+    &__heading{
+        align-self: flex-start;
+        text-align: center;
+        padding: 20px;
+    }
+
+    &__image{
+        height: 40vh;
+        width: fit-content;
+        align-self: center;
+        padding: 20px;
+    }
+
+    &__text {
+        text-align: center;
+        padding: 15px 0;
+    }
+
+}
