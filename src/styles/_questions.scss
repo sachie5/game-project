@@ -55,8 +55,8 @@
 
     &--options{
         display: inline-block;
-        height: 12vh;
-        width: 35vw;
+        height: 10vh;
+        width: 32vw;
         border: 1px solid white;
         padding: 5px;
         border-radius: 15px;
@@ -87,4 +87,16 @@
     font-size: 24px;
     text-align: center;
     padding: 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+    .answers__container {
+
+  
+    
+        &--options{
+            height: 12vh;
+            width: 35vw;
+        }
+}
 }

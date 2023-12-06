@@ -168,9 +168,9 @@ const nextQuestion = () => {
       answer.disabled = false;
     });
   } else {
-    alert("End of Quiz!");
     timeStop = true;
     counter = 0;
+    alert("End of Quiz!");
     return;
   }
 };
