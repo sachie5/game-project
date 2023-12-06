@@ -7,11 +7,6 @@ export type Quiz = {
 
 type Answers = { answer: string; correctIncorrect: string };
 
-/* export enum CorrectIncorrect {
-  CORRECT = "correct",
-  INCORRECT = "incorrect",
-} */
-
 export let quizQuestions: Quiz[] = [
   {
     ID: 1,

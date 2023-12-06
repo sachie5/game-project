@@ -4,16 +4,26 @@ import { mathQuestions } from "./quizData";
 
 const startPage = document.querySelector<HTMLElement>(".quiz__container");
 const startButton = document.querySelector<HTMLButtonElement>("#start");
-const playerScoreInput =  document.querySelector<HTMLHeadingElement>(".header__player");
-const questionPage =  document.querySelector<HTMLDivElement>(".pages__container");
-const questionCategory = document.querySelector<HTMLHeadingElement>(".questions--category");
-const question = document.querySelector<HTMLHeadingElement>(".questions--question");
-const answers = document.querySelectorAll<HTMLButtonElement>(".answers__container--options");
+const playerScoreInput =
+  document.querySelector<HTMLHeadingElement>(".header__player");
+const questionPage =
+  document.querySelector<HTMLDivElement>(".pages__container");
+const questionCategory = document.querySelector<HTMLHeadingElement>(
+  ".questions--category"
+);
+const question = document.querySelector<HTMLHeadingElement>(
+  ".questions--question"
+);
+const answers = document.querySelectorAll<HTMLButtonElement>(
+  ".answers__container--options"
+);
 const homeButton = document.querySelector<HTMLButtonElement>(".header__start");
 const quizTimer = document.querySelector<HTMLParagraphElement>(".quiz__timer");
 const grammarCategory = document.querySelector<HTMLButtonElement>("#grammar");
 const mathsCategory = document.querySelector<HTMLButtonElement>("#maths");
-const categoryPage = document.querySelector<HTMLElement>(".category__container");
+const categoryPage = document.querySelector<HTMLElement>(
+  ".category__container"
+);
 
 if (
   !startButton ||
@@ -37,11 +47,10 @@ const chooseCategory = () => {
   categoryPage.style.display = "flex";
 };
 
-
 //Global variables
 let score: number = 0;
 let questionIndex: number = 0; /*  Math.floor(Math.random() * 5) */
-let counter: number = 15;
+let counter: number = 0;
 let timeStop: boolean = false;
 let timer: number = 0;
 let questionsArr: Quiz[] = [];
@@ -49,6 +58,7 @@ let questionsArr: Quiz[] = [];
 //Timer function
 const countDown = () => {
   if (!timeStop) {
+    counter = 15;
     timer = setInterval(() => {
       quizTimer.innerHTML = `${counter}`;
       counter--;
@@ -71,16 +81,24 @@ const countDown = () => {
 const startQuiz = (event: Event) => {
   const buttonClicked = event.currentTarget as HTMLButtonElement;
   if (buttonClicked.innerText === "Grammar") {
-    questionsArr = quizQuestions;
+    questionsArr = [...quizQuestions];
   } else {
-    questionsArr = mathQuestions;
+    questionsArr = [...mathQuestions];
   }
 
+/*   //Randomise array
+  const shuffleArray = (arr: Quiz []) => {
+    let randomArr = [...arr]
+    randomArr.sort((a, b) => 0.5 -(Math.random() * arr.length))
+    return randomArr;
+  };
+
+  shuffleArray(questionsArr);
+ */
   //Score
   playerScoreInput.innerHTML += `<span class= score> ${score}</span>`;
 
   //Timer
-  counter = 15;
   timeStop = false;
   countDown();
 
@@ -97,7 +115,6 @@ const startQuiz = (event: Event) => {
   });
 };
 
-
 //Checking answers function
 const checkAnswers = (event: Event) => {
   const buttonClicked = event.target as HTMLButtonElement;
@@ -107,28 +124,26 @@ const checkAnswers = (event: Event) => {
       if (answersArray[index].correctIncorrect === "Correct") {
         console.log(answersArray[index].correctIncorrect);
         buttonClicked.style.backgroundColor = "green";
-        playerScoreInput.innerText = `Player score:  ${score + 1}`;
+        score = score + 1;
+        playerScoreInput.innerText = `Player score:  ${score}`;
+        answers.forEach((answer) => {
+          answer.disabled = true;
+        });
         //Timer reset
         timeStop = true;
-        answers.forEach((answer) => {
-          answer.disabled = true;
-        });
-        clearInterval(timer);
+        counter = 0;
       } else {
         buttonClicked.style.backgroundColor = "red";
-        //Timer reset
-        clearInterval(timer);
         answers.forEach((answer) => {
           answer.disabled = true;
         });
+        //Timer reset
+        timeStop = true;
+        counter = 0;
       }
     }
   }
 };
-
-answers.forEach((answer) => {
-  answer.addEventListener("click", checkAnswers);
-});
 
 //Next button function
 const nextButton = document.querySelector("#next");
@@ -138,8 +153,6 @@ if (!nextButton) {
 }
 
 const nextQuestion = () => {
-  //Timer reset
-  counter = 15;
   timeStop = false;
   countDown();
   // Question display
@@ -157,35 +170,28 @@ const nextQuestion = () => {
   } else {
     alert("End of Quiz!");
     timeStop = true;
-    clearInterval(timer);
+    counter = 0;
     return;
   }
 };
 
-
 //Home button function
 const restartQuiz = () => {
-  //Timer reset
-  counter = 0;
-  timeStop = true;
-  clearInterval(timer);
-  
   //Reset questions and styling
   startPage.style.display = "flex";
   questionPage.style.display = "none";
   playerScoreInput.innerText = `Player score: `;
+  questionIndex = 0;
   questionsArr = [];
   answers.forEach((answer) => {
     answer.disabled = false;
-    console.log(answer.disabled);
     answer.style.backgroundColor = `#FFF275`;
   });
-  console.log(timer);
-  console.log(timeStop);
-  console.log(counter);
+  //Timer reset
+  timeStop = true;
+  counter = 0;
   return;
 };
-
 
 //Global event Listeners
 startButton.addEventListener("click", chooseCategory);
@@ -193,3 +199,7 @@ grammarCategory.addEventListener("click", startQuiz);
 mathsCategory.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
 homeButton.addEventListener("click", restartQuiz);
+
+answers.forEach((answer) => {
+  answer.addEventListener("click", checkAnswers);
+});
