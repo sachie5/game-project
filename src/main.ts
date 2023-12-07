@@ -53,20 +53,20 @@ if (
 
 //Global variables
 let score: number = 0;
-let questionIndex: number = 0; 
+let questionIndex: number = 0;
 let counter: number = 0;
 let timeStop: boolean = false;
 let timer: number = 0;
 let questionsArr: Quiz[] = [];
 
 
-//Showing category page from start
 const chooseCategory = () => {
   startPage.style.display = "none";
   categoryPage.style.display = "flex";
 };
 
-//Timer function
+
+
 const countDown = () => {
   if (!timeStop) {
     counter = 15;
@@ -88,10 +88,11 @@ const countDown = () => {
   }
 };
 
-//Start Quiz function
+
 const startQuiz = (event: Event) => {
   const clickedButton = event.currentTarget as HTMLButtonElement;
   clickedButton.innerText === "Grammar" ? questionsArr = [...grammarQuestions] : questionsArr = [...mathQuestions];
+  questionsArr = questionsArr.sort((a, b)=> 0.5 - Math.random());
   //Score
   playerScoreInput.innerHTML += `<span class= score> ${score}</span>`;
 
@@ -112,7 +113,7 @@ const startQuiz = (event: Event) => {
   });
 };
 
-//Checking answers function
+
 const checkAnswers = (event: Event) => {
   const buttonClicked = event.target as HTMLButtonElement;
   let answersArray = questionsArr[questionIndex].answers;
@@ -142,7 +143,8 @@ const checkAnswers = (event: Event) => {
   }
 };
 
-//Next button function
+
+
 const nextQuestion = () => {
   //Timer
   timeStop = false;
@@ -150,7 +152,7 @@ const nextQuestion = () => {
   countDown();
   
   // Question display
-  questionIndex++;
+  questionIndex++
   if (questionIndex < questionsArr.length) {
     questionCategory.innerText = `${questionsArr[questionIndex].category}`;
     question.innerText = `${questionsArr[questionIndex].question}`;
@@ -176,7 +178,7 @@ const nextQuestion = () => {
   }
 };
 
-//Home button function
+
 const restartQuiz = () => {
   //Reset questions and styling
   startPage.style.display = "flex";

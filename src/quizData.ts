@@ -77,12 +77,127 @@ export let grammarQuestions: Quiz[] = [
   {
     ID: 5,
     category: "Grammar",
-    question: "Which is a synonym of the word 'depressing'?",
+    question: "Complete the sentence in past perfect tense. After Gita _______________ her homework, she went outside to play in the garden.",
     answers: [
-      { answer: "decreasing", correctIncorrect: "Incorrect" },
-      { answer: "gloomy", correctIncorrect: "Correct" },
-      { answer: "lowering", correctIncorrect: "Incorrect" },
-      { answer: "pushing", correctIncorrect: "Incorrect" },
+      {
+        answer: "had completed",
+        correctIncorrect: "Correct",
+      },
+      {
+        answer: "completed",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "has completed",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "was completing",
+        correctIncorrect: "Incorrect",
+      },
+    ],
+  },
+  {
+    ID: 6,
+    category: "Grammar",
+    question: "How is since used in this sentence? Mary didn't cook often since she found it difficult.",
+    answers: [
+      {
+        answer: "verb",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "preposition",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "conjunction",
+        correctIncorrect: "Correct",
+      },
+      {
+        answer: "adverb",
+        correctIncorrect: "Incorrect",
+      },
+    ],
+  },
+  {
+    ID: 7,
+    category: "Grammar",
+    question: "Which sentence needsa question mark?",
+    answers: [
+      {
+        answer: "The night is scary",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "During the night, where did you go",
+        correctIncorrect: "Correct",
+      },
+      {
+        answer: "The dog barked into the night",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "Go back to your home tonight",
+        correctIncorrect: "Incorrect",
+      },
+    ],
+  },
+  {
+    ID: 8,
+    category: "Grammar",
+    question: "Which of these is a modal verb?",
+    answers: [
+      {
+        answer: "join",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "however",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "frantically",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "might",
+        correctIncorrect: "Correct",
+      },
+    ],
+  },
+  {
+    ID: 9,
+    category: "Grammar",
+    question: "Which of these words is spelt correctly?",
+    answers: [
+      {
+        answer: "separate",
+        correctIncorrect: "Correct",
+      },
+      {
+        answer: "desparate",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "enviroment",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "temparature",
+        correctIncorrect: "Incorrect",
+      },
+    ],
+  },
+  {
+    ID: 10,
+    category: "Grammar",
+    question: "Which of these words is spelt correctly?",
+    answers: [
+      { answer: "immidiate", correctIncorrect: "Incorrect" },
+      { answer: "mischievous", correctIncorrect: "Correct" },
+      { answer: "stomack", correctIncorrect: "Incorrect" },
+      { answer: "reccomend", correctIncorrect: "Incorrect" },
     ],
   },
 ];
