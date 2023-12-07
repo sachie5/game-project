@@ -3,6 +3,13 @@ import { Quiz, grammarQuestions } from "./quizData";
 import { mathQuestions } from "./quizData";
 import confetti, { Options } from "canvas-confetti";
 
+let score: number = 0;
+let questionIndex: number = 0;
+let counter: number = 0;
+let timeStop: boolean = false;
+let timer: number = 0;
+let questionsArr: Quiz[] = [];
+
 const startPage = document.querySelector<HTMLElement>(".quiz__start");
 const startButton = document.querySelector<HTMLButtonElement>("#start");
 const playerScoreInput =
@@ -53,18 +60,11 @@ if (
   throw new Error("Issue with selector");
 }
 
-//Global variables
-let score: number = 0;
-let questionIndex: number = 0;
-let counter: number = 0;
-let timeStop: boolean = false;
-let timer: number = 0;
-let questionsArr: Quiz[] = [];
-
 
 const chooseCategory = () => {
   startPage.style.display = "none";
   categoryPage.style.display = "flex";
+  playerNameInput.value.trim() === "" ? playerNameInput.value = "Player One" : playerNameInput.value;
   playerScoreInput.innerText = `${playerNameInput.value}:`
 };
 
@@ -185,10 +185,12 @@ const nextQuestion = () => {
 const restartQuiz = () => {
   //Reset questions and styling
   startPage.style.display = "flex";
+  categoryPage.style.display = "none";
   questionPage.style.display = "none";
   endPage.style.display = "none";
   playerScoreInput.style.display = "inline-block";
   playerScoreInput.innerText = `Player score: `;
+  playerNameInput.value = "";
   endScore.innerText = "";
   questionIndex = 0;
   questionsArr = [];
@@ -215,7 +217,7 @@ const fireConfetti = () => {
 return confetti(options);
 };
 
-//Global event Listeners
+
 startButton.addEventListener("click", chooseCategory);
 grammarCategory.addEventListener("click", startQuiz);
 mathsCategory.addEventListener("click", startQuiz);

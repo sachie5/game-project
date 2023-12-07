@@ -1,36 +1,72 @@
 # Game Project
 
-My project is to create a game using HTML, CSS and Typescript. I decided to create a quiz game to use as revision tool for students.
+This project is to create a game using HTML, CSS and Typescript. The aim of the project is to create a game that uses either click or keypress events to trigger the events that occur in Typescript and be able to work on different devices with a mobile-first approach to the implementation. I decided to create a quiz game based on the Year 6 curriculum.
 
 ## Table of Contents
 
-1. HTML Structure
-2. SCSS Structure
-3. TypeScript
+1. Project Requirements 
+2. Project Goals
+3. Examples of code in project
+4. Cloning the project
 
-## HTML Structure
+## Project requirements
 
-The HTML Structure is made of head tag with links to the scss as well as the different font I added.
+The requirements for this project were:
 
-The script link is in the body before the main tag.
+1. Create and present a simple plan of my game including what will occur in the game, the steps to building it and features that would be included in order of importance.
+2. Public repository on GitHub.
+3. At least 15 meaningful commits for the project and repo on GutHub with descriptive names.
+4. A README with a short introduction to the project.
+5. TS code formatted as functions.
+6. Correct formatting of code with suitable indentation and variable names.
+7. The code is all my own and able to explain.
+8. Click or keypress events to trigger events in TypeScript.
+9. Mobile-first approach but must work on varying device widths.
 
-The main tag contains different divs to represent four key pages: start of quiz page, category page, questions page and end of quiz page.
+## Project Goals
 
-## SCSS structure
+The project goals were:
 
-I have a different SCSS pages that feed into my main: variables (for colours and font), start(for start of quiz page), categories, questions page and end of quiz. The scss in these is focused on styling the layout so it is uniform and look good on different devices.
+** Create a working Game: The main task is to create a Game not only will this test your understanding of TypeScript but how you
+break down a problem.
+** Practice using Git and GitHub fl ow: We want you to get as much practice as possible using git, GitHub and the command line.
+** Get a better understanding of how to scope a larger project: We want to see a clear plan of what you're going to build and
+how.
+** Apply what you are learning: This is a great place to apply what you have been learning on all of the course so far. When you
+get it functioning really push on the UI, use SCSS, BEM, anything else you fi nd on the web....really go mad!
 
-## Typescript
+## Examples of code in the project
 
-I created a seperate Typescript file for the quiz questions. They have a type alias and different objects depending on the category : Grammar and Maths. These are they imported into my main.ts file.
+I have highlighted the function that allows the game to start and presents the first question.
 
-The main functions for the quiz game to work are:
+The startQuiz function - In this function, depending on the category button (Grammar or Maths) clicked by the player, an object from the appropriate array is selected and the data is inserted into the questionPage HTML. This presentes as a question and 4 possible options to choose from.
 
-** The Choose Category function
-** The Timer Function = countDown()
-** The startQuiz function 
-** The Checking Answers function
-** The Next Button function
-** The Home Button function = restartQuiz()
+const startQuiz = (event: Event) => {
+  const clickedButton = event.currentTarget as HTMLButtonElement;
+  clickedButton.innerText === "Grammar" ? questionsArr = [...grammarQuestions] : questionsArr = [...mathQuestions];
+  questionsArr = questionsArr.sort((a, b)=> 0.5 - Math.random());
+  //Score
+  playerScoreInput.innerHTML += `<span class= score> ${score}</span>`;
 
-The global variables are important for the game to run smoothly.
+  //Timer
+  timeStop = false;
+  countDown();
+
+  //Filling question correctly
+  categoryPage.style.display = "none";
+  questionPage.style.display = "flex";
+  questionCategory.innerText = `${questionsArr[questionIndex].category}`;
+  question.innerText = `${questionsArr[questionIndex].question}`;
+  const currentQuestion = questionsArr[questionIndex].answers;
+
+  answers.forEach((answer, i) => {
+    answer.disabled = false;
+    answer.innerText = `${currentQuestion[i].answer}`;
+  });
+};
+
+## Cloning the project
+
+** Copy the url and git clone into chosen folder
+** Run "npm install" to download appropriate dependencies
+** Run "npm run dev" to open in browser.

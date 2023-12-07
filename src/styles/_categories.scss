@@ -16,6 +16,7 @@
         padding: 5px;
         border-radius: 15px;
         font-size: 35px;
+        font-family: $font-body;
     }
 
     &--button {
@@ -29,10 +30,14 @@
 
 #grammar{
     background-color: $grammar-color;
+    box-shadow: 10px 5px 5px blue;
+    border: none;
 }
 
 #maths{
     background-color: $maths-color;
+    box-shadow: 10px 5px 5px yellow;
+    border: 0.5px solid white;
 }
 .begin{
     display: flex;

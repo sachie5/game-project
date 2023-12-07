@@ -123,7 +123,7 @@ export let grammarQuestions: Quiz[] = [
   {
     ID: 7,
     category: "Grammar",
-    question: "Which sentence needsa question mark?",
+    question: "Which sentence needs a question mark?",
     answers: [
       {
         answer: "The night is scary",
