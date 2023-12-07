@@ -26,6 +26,11 @@ I created a seperate Typescript file for the quiz questions. They have a type al
 
 The main functions for the quiz game to work are:
 
+** The Choose Category function
 ** The Timer Function = countDown()
 ** The startQuiz function 
-** 
+** The Checking Answers function
+** The Next Button function
+** The Home Button function = restartQuiz()
+
+The global variables are important for the game to run smoothly.

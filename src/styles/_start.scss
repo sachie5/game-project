@@ -28,7 +28,7 @@
     align-items: center;
     justify-content: center;
 
-    &__container {
+    &__start {
         height: 82vh;
         width: 82vw;
         background-color: $quiz-background;
@@ -73,7 +73,7 @@
     }
 }
 
-.pages__container{
+.quizPage__container{
     display: none;
 }
 

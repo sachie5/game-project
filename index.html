@@ -19,27 +19,27 @@
       <h1 class="header__player">Player score:</h1>
     </header>
     <main class="quiz">
-      <div class="quiz__container">
-        <h2 class="quiz__container--heading">
+      <div class="quiz__start">
+        <h2 class="quiz__start--heading">
           Welcome to the "Am I Smarter than a Year 6 Child" quiz!
         </h2>
         <img
-          class="quiz__container--image"
+          class="quiz__start--image"
           src="./src/images/year-6.jpg"
           alt="year-6-children"
         />
-        <p class="quiz__container--text">
+        <p class="quiz__start--text">
           Are you smarter than the average Year 6 student? Have a go at this
           quiz based on the Year 6 Curriculum and see how well you do!
         </p>
-        <p class="quiz__container--text">Press start to commence the quiz</p>
-        <button type="button" class="quiz__container--button" id="start">Start</button>
+        <p class="quiz__start--text">Press start to commence the quiz</p>
+        <button type="button" class="quiz__start--button" id="start">Start</button>
         </div>
         <div class="category__container">
           <button class="category__container--choice" id="grammar">Grammar</button>
           <button class="category__container--choice" id="maths">Maths</button>
           </div>
-        <div class="pages__container">
+        <div class="quizPage__container">
         <div class="questions">
           <h2 class="questions--category"></h2>
           <h3 class="questions--question"></h3>
@@ -50,7 +50,7 @@
         <button class="answers__container--options answers__container--option3"></button>
         <button class="answers__container--options answers__container--option4"></button>
         </div>
-        <button class="pages__container--button" id = "next">Next Question</button>
+        <button class="quizPage__container--button" id = "next">Next Question</button>
         <p class="quiz__timer"></p>
       </div>
       <div class="quizEnd">
@@ -58,6 +58,7 @@
         <img class="quizEnd__image" src="./src/images/endTest.png" alt="celebrate">
         <p class="quizEnd__text">You have reached the end of the quiz.</p>
         <p class="quizEnd__text">You scored: </p>
+        <p class="quizEnd__text" id="score"></p>
       </div>
     </main>
   </body>

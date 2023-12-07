@@ -1,13 +1,14 @@
 import "./styles/main.scss";
-import { Quiz, quizQuestions } from "./quizData";
+import { Quiz, grammarQuestions } from "./quizData";
 import { mathQuestions } from "./quizData";
+import confetti, { Options } from "canvas-confetti";
 
-const startPage = document.querySelector<HTMLElement>(".quiz__container");
+const startPage = document.querySelector<HTMLElement>(".quiz__start");
 const startButton = document.querySelector<HTMLButtonElement>("#start");
 const playerScoreInput =
   document.querySelector<HTMLHeadingElement>(".header__player");
 const questionPage =
-  document.querySelector<HTMLDivElement>(".pages__container");
+  document.querySelector<HTMLDivElement>(".quizPage__container");
 const questionCategory = document.querySelector<HTMLHeadingElement>(
   ".questions--category"
 );
@@ -25,6 +26,9 @@ const categoryPage = document.querySelector<HTMLElement>(
   ".category__container"
 );
 const endPage = document.querySelector<HTMLElement>(".quizEnd");
+const nextButton = document.querySelector<HTMLButtonElement>("#next");
+const endImage = document.querySelector<HTMLImageElement>(".quizEnd__image")
+const endScore = document.querySelector<HTMLParagraphElement>("#score");
 
 if (
   !startButton ||
@@ -39,7 +43,10 @@ if (
   !grammarCategory ||
   !mathsCategory ||
   !categoryPage ||
-  !endPage
+  !endPage ||
+  !nextButton ||
+  !endImage ||
+  !endScore
 ) {
   throw new Error("Issue with selector");
 }
@@ -83,13 +90,8 @@ const countDown = () => {
 
 //Start Quiz function
 const startQuiz = (event: Event) => {
-  const buttonClicked = event.currentTarget as HTMLButtonElement;
-  if (buttonClicked.innerText === "Grammar") {
-    questionsArr = [...quizQuestions];
-  } else {
-    questionsArr = [...mathQuestions];
-  }
-
+  const clickedButton = event.currentTarget as HTMLButtonElement;
+  clickedButton.innerText === "Grammar" ? questionsArr = [...grammarQuestions] : questionsArr = [...mathQuestions];
   //Score
   playerScoreInput.innerHTML += `<span class= score> ${score}</span>`;
 
@@ -141,16 +143,12 @@ const checkAnswers = (event: Event) => {
 };
 
 //Next button function
-const nextButton = document.querySelector("#next");
-
-if (!nextButton) {
-  throw new Error("Issues with selector");
-}
-
 const nextQuestion = () => {
   //Timer
   timeStop = false;
+  clearInterval(timer);
   countDown();
+  
   // Question display
   questionIndex++;
   if (questionIndex < questionsArr.length) {
@@ -167,11 +165,13 @@ const nextQuestion = () => {
     //Timer
     timeStop = true;
     counter = 0;
+    
     //Display
     questionPage.style.display = "none";
     endPage.style.display = "flex";
     playerScoreInput.style.display = "none";
-    endPage.innerHTML += `<p class=quizEnd__text>${score}`;
+    endScore.innerText = `${score}`;
+    
     return;
   }
 };
@@ -182,7 +182,9 @@ const restartQuiz = () => {
   startPage.style.display = "flex";
   questionPage.style.display = "none";
   endPage.style.display = "none";
+  playerScoreInput.style.display = "inline-block";
   playerScoreInput.innerText = `Player score: `;
+  endScore.innerText = "";
   questionIndex = 0;
   questionsArr = [];
   answers.forEach((answer) => {
@@ -192,10 +194,20 @@ const restartQuiz = () => {
   //Score
   score = 0;
   //Timer reset
-  clearInterval(timer);
   timeStop = true;
+  clearInterval(timer);
   counter = 0;
   return;
+};
+
+const fireConfetti = () => {
+  const options: Options = {
+    particleCount: 60,
+    angle: Math.random() * 360,
+    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+    spread: Math.random() * 360,
+}
+return confetti(options);
 };
 
 //Global event Listeners
@@ -204,6 +216,7 @@ grammarCategory.addEventListener("click", startQuiz);
 mathsCategory.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
 homeButton.addEventListener("click", restartQuiz);
+endImage.addEventListener("click", fireConfetti);
 
 answers.forEach((answer) => {
   answer.addEventListener("click", checkAnswers);

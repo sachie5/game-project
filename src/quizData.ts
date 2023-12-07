@@ -7,7 +7,7 @@ export type Quiz = {
 
 type Answers = { answer: string; correctIncorrect: string };
 
-export let quizQuestions: Quiz[] = [
+export let grammarQuestions: Quiz[] = [
   {
     ID: 1,
     category: "Grammar",
