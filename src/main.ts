@@ -7,6 +7,7 @@ const startPage = document.querySelector<HTMLElement>(".quiz__start");
 const startButton = document.querySelector<HTMLButtonElement>("#start");
 const playerScoreInput =
   document.querySelector<HTMLHeadingElement>(".header__player");
+const playerNameInput = document.querySelector<HTMLInputElement>("#player-name");
 const questionPage =
   document.querySelector<HTMLDivElement>(".quizPage__container");
 const questionCategory = document.querySelector<HTMLHeadingElement>(
@@ -34,6 +35,7 @@ if (
   !startButton ||
   !startPage ||
   !playerScoreInput ||
+  !playerNameInput ||
   !questionPage ||
   !questionCategory ||
   !question ||
@@ -63,6 +65,7 @@ let questionsArr: Quiz[] = [];
 const chooseCategory = () => {
   startPage.style.display = "none";
   categoryPage.style.display = "flex";
+  playerScoreInput.innerText = `${playerNameInput.value}:`
 };
 
 
