@@ -27,12 +27,12 @@ The requirements for this project were:
 
 The project goals were:
 
-** Create a working Game: The main task is to create a Game not only will this test your understanding of TypeScript but how you
+* Create a working Game: The main task is to create a Game not only will this test your understanding of TypeScript but how you
 break down a problem.
-** Practice using Git and GitHub fl ow: We want you to get as much practice as possible using git, GitHub and the command line.
-** Get a better understanding of how to scope a larger project: We want to see a clear plan of what you're going to build and
+* Practice using Git and GitHub fl ow: We want you to get as much practice as possible using git, GitHub and the command line.
+* Get a better understanding of how to scope a larger project: We want to see a clear plan of what you're going to build and
 how.
-** Apply what you are learning: This is a great place to apply what you have been learning on all of the course so far. When you
+* Apply what you are learning: This is a great place to apply what you have been learning on all of the course so far. When you
 get it functioning really push on the UI, use SCSS, BEM, anything else you fi nd on the web....really go mad!
 
 ## Examples of code in the project
@@ -67,6 +67,6 @@ const startQuiz = (event: Event) => {
 
 ## Cloning the project
 
-** Copy the url and git clone into chosen folder
-** Run "npm install" to download appropriate dependencies
-** Run "npm run dev" to open in browser.
+* Copy the url and git clone into chosen folder
+* Run "npm install" to download appropriate dependencies
+* Run "npm run dev" to open in browser.
