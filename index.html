@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Courgette&family=Fredoka&family=Lilita+One&family=Rubik&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Year 6 Quiz</title>
+    <script type="module" crossorigin src="./assets/index-XeDOQhJY.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Wn44vKlj.css">
+  </head>
+  <body>
+    <header class="header">
+      <button class="header__start">Home</button>
+      <h1 class="header__player">Player score:</h1>
+    </header>
+    <main class="quiz">
+      <div class="quiz__start">
+        <h2 class="quiz__start--heading">
+          Welcome to the "Am I Smarter than a Year 6 Child" quiz!
+        </h2>
+        <img
+          class="quiz__start--image"
+          src="./assets/year-6-NzPZSVb7.jpg"
+          alt="year-6-children"
+        />
+        <p class="quiz__start--text">
+          Are you smarter than the average Year 6 student? Have a go at this
+          quiz based on the Year 6 Curriculum and see how well you do!
+        </p>
+        <p class="quiz__start--text">Enter your player name to begin!</p>
+        <input type="text" id="player-name" name="player-name" class="quiz__start--input"/>
+        <button type="button" class="quiz__start--button" id="start">
+          Start
+        </button>
+      </div>
+      <div class="category__container">
+        <button class="category__container--choice" id="grammar">
+          Grammar
+        </button>
+        <button class="category__container--choice" id="maths">Maths</button>
+      </div>
+      <div class="quizPage__container">
+        <div class="questions">
+          <h2 class="questions--category"></h2>
+          <h3 class="questions--question"></h3>
+        </div>
+        <div class="answers__container">
+          <button
+            class="answers__container--options answers__container--option1"
+          ></button>
+          <button
+            class="answers__container--options answers__container--option2"
+          ></button>
+          <button
+            class="answers__container--options answers__container--option3"
+          ></button>
+          <button
+            class="answers__container--options answers__container--option4"
+          ></button>
+        </div>
+        <button class="quizPage__container--button" id="next">
+          Next Question
+        </button>
+        <p class="quiz__timer"></p>
+      </div>
+      <div class="quizEnd">
+        <h1 class="quizEnd__heading">End of Quiz!</h1>
+        <img
+          class="quizEnd__image"
+          src="./assets/endTest-zbg6Z_ls.png"
+          alt="celebrate"
+        />
+        <p class="quizEnd__text">You have reached the end of the quiz.</p>
+        <p class="quizEnd__text">You scored:</p>
+        <p class="quizEnd__text" id="score"></p>
+      </div>
+    </main>
+  </body>
+</html>
