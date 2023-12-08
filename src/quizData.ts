@@ -77,22 +77,22 @@ export let grammarQuestions: Quiz[] = [
   {
     ID: 5,
     category: "Grammar",
-    question: "Complete the sentence in past perfect tense. After Gita _______________ her homework, she went outside to play in the garden.",
+    question: "Complete the sentence in past continuous tense. I ______ my homework.",
     answers: [
       {
-        answer: "had completed",
+        answer: "was completing",
         correctIncorrect: "Correct",
       },
       {
+        answer: "am completing",
+        correctIncorrect: "Incorrect",
+      },
+      {
+        answer: "have completed",
+        correctIncorrect: "Incorrect",
+      },
+      {
         answer: "completed",
-        correctIncorrect: "Incorrect",
-      },
-      {
-        answer: "has completed",
-        correctIncorrect: "Incorrect",
-      },
-      {
-        answer: "was completing",
         correctIncorrect: "Incorrect",
       },
     ],

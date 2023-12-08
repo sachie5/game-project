@@ -16,31 +16,31 @@
         display: inline-block;
         width: 30vw;
         height: 7vh;
-        padding: 10px;
+        padding: 5px;
         border: 2px solid $background-color;
         border-radius: 10px;
         background-color: white;
         color: $background-color;
         font-family: $font-body;
-        font-size: 20px;
+        font-size: 14px;
     }
 }
 
 .questions {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 25%;
 
 
     &--category {
         text-align: center;
-        font-size: 28px;
+        font-size: 22px;
     }
 
     &--question {
         text-align: center;
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 
@@ -57,14 +57,14 @@
 
     &--options {
         display: inline-block;
-        height: 10vh;
+        height: 12vh;
         width: 32vw;
         padding: 5px;
         border: 1px solid white;
         border-radius: 15px;
         box-shadow: 7px 5px 5px black;
         background-color: $answer-color;
-        font-size: 20px;
+        font-size: 14px;
         font-family: $font-body;
    }
 
@@ -95,11 +95,32 @@
 }
 
 @media screen and (min-width: 768px) {
+    .quizPage__container{
+
+        &--button {
+            font-size: 20px;
+        }
+
+    }
+    .questions{
+
+        &--category{
+            font-size: 28px;
+        }
+
+        &--question{
+            font-size: 22px;
+        }
+    }
+
+
+
     .answers__container {
 
         &--options {
             height: 12vh;
             width: 35vw;
+            font-size: 20px;
         }
     }
 }

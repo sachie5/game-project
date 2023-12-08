@@ -19,7 +19,7 @@
 
     &__player{
         width: 30vw;
-        font-size: 20px;
+        font-size: 16px;
         align-self: center;
     }
 }
@@ -43,7 +43,7 @@
         &--heading {
             text-align: center;
             width: 15em;
-            font-size: 24px;
+            font-size: 20px;
             text-wrap: wrap;
         }
 
@@ -55,7 +55,7 @@
         &--text {
             text-align: center;
             padding: 10px;
-            font-size: 20px;
+            font-size: 16px;
         }
 
         &--input {
@@ -94,4 +94,27 @@
 
 .quizEnd {
     display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .header{
+
+        &__player{
+            font-size: 20px;
+        }
+    }
+
+    .quiz{
+
+        &__start{
+
+            &--heading {
+                font-size: 24px;
+            }
+
+            &--text{
+                font-size: 20px;
+            }
+    }
+}
 }
