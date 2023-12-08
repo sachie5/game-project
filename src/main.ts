@@ -1,6 +1,5 @@
 import "./styles/main.scss";
-import { Quiz, grammarQuestions } from "./quizData";
-import { mathQuestions } from "./quizData";
+import { Quiz, grammarQuestions, mathQuestions, Answers } from "./quizData";
 import confetti, { Options } from "canvas-confetti";
 
 let score: number = 0;
@@ -9,36 +8,43 @@ let counter: number = 0;
 let timeStop: boolean = false;
 let timer: number = 0;
 let questionsArr: Quiz[] = [];
+let currentQuestion: Answers [] = [];
 
+const quizBackground = document.querySelector<HTMLElement>(".quiz");
 const startPage = document.querySelector<HTMLElement>(".quiz__start");
 const startButton = document.querySelector<HTMLButtonElement>("#start");
 const playerScoreInput =
   document.querySelector<HTMLHeadingElement>(".header__player");
-const playerNameInput = document.querySelector<HTMLInputElement>("#player-name");
-const questionPage =
-  document.querySelector<HTMLDivElement>(".quizPage__container");
+const playerNameInput =
+  document.querySelector<HTMLInputElement>("#player-name");
+const categoryPage = document.querySelector<HTMLElement>(
+  ".category__container"
+);
+const questionPage = document.querySelector<HTMLDivElement>(
+  ".quizPage__container"
+);
 const questionCategory = document.querySelector<HTMLHeadingElement>(
   ".questions--category"
 );
 const question = document.querySelector<HTMLHeadingElement>(
   ".questions--question"
 );
+const questionBackground = document.querySelector<HTMLDivElement>(".questions");
+const quizTimer = document.querySelector<HTMLParagraphElement>(".quiz__timer");
+const nextButton = document.querySelector<HTMLButtonElement>("#next");
+const homeButton = document.querySelector<HTMLButtonElement>(".header__start");
+const endPage = document.querySelector<HTMLElement>(".quizEnd");
+const endImage = document.querySelector<HTMLImageElement>(".quizEnd__image");
+const endScore = document.querySelector<HTMLParagraphElement>("#score");
+const categories = document.querySelectorAll<HTMLButtonElement>(
+  ".category__container--choice"
+);
 const answers = document.querySelectorAll<HTMLButtonElement>(
   ".answers__container--options"
 );
-const homeButton = document.querySelector<HTMLButtonElement>(".header__start");
-const quizTimer = document.querySelector<HTMLParagraphElement>(".quiz__timer");
-const grammarCategory = document.querySelector<HTMLButtonElement>("#grammar");
-const mathsCategory = document.querySelector<HTMLButtonElement>("#maths");
-const categoryPage = document.querySelector<HTMLElement>(
-  ".category__container"
-);
-const endPage = document.querySelector<HTMLElement>(".quizEnd");
-const nextButton = document.querySelector<HTMLButtonElement>("#next");
-const endImage = document.querySelector<HTMLImageElement>(".quizEnd__image")
-const endScore = document.querySelector<HTMLParagraphElement>("#score");
 
 if (
+  !quizBackground ||
   !startButton ||
   !startPage ||
   !playerScoreInput ||
@@ -46,34 +52,51 @@ if (
   !questionPage ||
   !questionCategory ||
   !question ||
+  !questionBackground ||
   !answers ||
   !homeButton ||
   !quizTimer ||
-  !grammarCategory ||
-  !mathsCategory ||
+  !categories ||
   !categoryPage ||
   !endPage ||
   !nextButton ||
   !endImage ||
-  !endScore
+  !endScore 
 ) {
   throw new Error("Issue with selector");
 }
 
-
 const chooseCategory = () => {
   startPage.style.display = "none";
   categoryPage.style.display = "flex";
-  playerNameInput.value.trim() === "" ? playerNameInput.value = "Player One" : playerNameInput.value;
-  playerScoreInput.innerText = `${playerNameInput.value}:`
+  playerNameInput.value.trim()  === ""
+    ? playerNameInput.value = "Player One"
+    : playerNameInput.value;
+    
+  playerScoreInput.innerText = `${playerNameInput.value}:`;
+  //Easter Egg
+  switch (playerNameInput.value.trim()){
+    case "Naruto":
+      questionPage.style.backgroundImage = "url(https://wallpapercave.com/wp/wp4068637.jpg)";
+      questionBackground.style.backgroundColor = "#FFFFFF";
+      quizTimer.style.textAlign = "right";
+      break;
+    case "Egg":
+      questionPage.style.backgroundImage = "url(https://i0.wp.com/ctrlcurate.com/wp-content/uploads/2016/04/photo-template.jpg?resize=600%2C800&ssl=1)";
+      questionBackground.style.backgroundColor = "#FFFFFF";
+      quizTimer.style.textAlign = "";
+     break;
+    default:
+      questionPage.style.backgroundImage = "";
+      questionBackground.style.backgroundColor = "";
+  }
 };
-
-
 
 const countDown = () => {
   if (!timeStop) {
-    counter = 15;
+    counter = 20;
     timer = setInterval(() => {
+      quizTimer.style.display = "inline";
       quizTimer.innerHTML = `${counter}`;
       counter--;
       if (counter < 0) {
@@ -82,6 +105,7 @@ const countDown = () => {
           answer.disabled = true;
         });
         timeStop = true;
+        quizTimer.style.display = "none";
         return;
       }
     }, 1000);
@@ -91,24 +115,23 @@ const countDown = () => {
   }
 };
 
-
 const startQuiz = (event: Event) => {
   const clickedButton = event.currentTarget as HTMLButtonElement;
-  clickedButton.innerText === "Grammar" ? questionsArr = [...grammarQuestions] : questionsArr = [...mathQuestions];
-  questionsArr = questionsArr.sort((a, b)=> 0.5 - Math.random());
+  clickedButton.innerText === "Grammar"
+    ? (questionsArr = [...grammarQuestions])
+    : (questionsArr = [...mathQuestions]);
+  questionsArr = questionsArr.sort((a, b) => 0.5 - Math.random());
   //Score
   playerScoreInput.innerHTML += `<span class= score> ${score}</span>`;
-
   //Timer
   timeStop = false;
   countDown();
-
   //Filling question correctly
   categoryPage.style.display = "none";
   questionPage.style.display = "flex";
   questionCategory.innerText = `${questionsArr[questionIndex].category}`;
   question.innerText = `${questionsArr[questionIndex].question}`;
-  const currentQuestion = questionsArr[questionIndex].answers;
+  currentQuestion = questionsArr[questionIndex].answers;
 
   answers.forEach((answer, i) => {
     answer.disabled = false;
@@ -116,14 +139,12 @@ const startQuiz = (event: Event) => {
   });
 };
 
-
 const checkAnswers = (event: Event) => {
   const buttonClicked = event.target as HTMLButtonElement;
-  let answersArray = questionsArr[questionIndex].answers;
-  for (let index = 0; index < answersArray.length; index++) {
-    if (buttonClicked.innerText === answersArray[index].answer) {
-      if (answersArray[index].correctIncorrect === "Correct") {
-        console.log(answersArray[index].correctIncorrect);
+  for (let index = 0; index < currentQuestion.length; index++) {
+    if (buttonClicked.innerText === currentQuestion[index].answer) {
+      if (currentQuestion[index].correctIncorrect === "Correct") {
+        console.log(currentQuestion[index].correctIncorrect);
         buttonClicked.style.backgroundColor = "green";
         score = score + 1;
         playerScoreInput.innerText = `Player score:  ${score}`;
@@ -146,20 +167,17 @@ const checkAnswers = (event: Event) => {
   }
 };
 
-
-
 const nextQuestion = () => {
   //Timer
   timeStop = false;
   clearInterval(timer);
   countDown();
-  
   // Question display
-  questionIndex++
+  questionIndex++;
   if (questionIndex < questionsArr.length) {
     questionCategory.innerText = `${questionsArr[questionIndex].category}`;
     question.innerText = `${questionsArr[questionIndex].question}`;
-    let currentQuestion = questionsArr[questionIndex].answers;
+    currentQuestion = questionsArr[questionIndex].answers;
 
     answers.forEach((answer, i) => {
       answer.style.backgroundColor = `#FFF275`;
@@ -170,17 +188,14 @@ const nextQuestion = () => {
     //Timer
     timeStop = true;
     counter = 0;
-    
     //Display
     questionPage.style.display = "none";
     endPage.style.display = "flex";
     playerScoreInput.style.display = "none";
     endScore.innerText = `${score}`;
-    
     return;
   }
 };
-
 
 const restartQuiz = () => {
   //Reset questions and styling
@@ -213,18 +228,17 @@ const fireConfetti = () => {
     angle: Math.random() * 360,
     colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
     spread: Math.random() * 360,
-}
-return confetti(options);
+  };
+  return confetti(options);
 };
 
-
 startButton.addEventListener("click", chooseCategory);
-grammarCategory.addEventListener("click", startQuiz);
-mathsCategory.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
 homeButton.addEventListener("click", restartQuiz);
 endImage.addEventListener("click", fireConfetti);
-
 answers.forEach((answer) => {
   answer.addEventListener("click", checkAnswers);
+});
+categories.forEach((category) => {
+  category.addEventListener("click", startQuiz);
 });

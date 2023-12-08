@@ -28,18 +28,14 @@
     }
 }
 
-#grammar{
+#grammar {
     background-color: $grammar-color;
-    box-shadow: 10px 5px 5px blue;
+    box-shadow: 10px 5px 5px #0000FF;
     border: none;
 }
 
-#maths{
+#maths {
     background-color: $maths-color;
-    box-shadow: 10px 5px 5px yellow;
-    border: 0.5px solid white;
-}
-.begin{
-    display: flex;
-    justify-content: center;
+    box-shadow: 10px 5px 5px #FF8C00;
+    border: none;
 }

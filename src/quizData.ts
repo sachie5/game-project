@@ -5,7 +5,7 @@ export type Quiz = {
   answers: Answers[];
 };
 
-type Answers = { answer: string; correctIncorrect: string };
+export type Answers = { answer: string; correctIncorrect: string };
 
 export let grammarQuestions: Quiz[] = [
   {
@@ -280,4 +280,59 @@ export let mathQuestions : Quiz[] = [
     { answer: "7300", correctIncorrect: "Incorrect" },
   ],
 },
+{
+  ID: 6,
+  category: "Maths",
+  question: "Which number is closest to 100?",
+  answers: [
+    { answer: "85", correctIncorrect: "Incorrect" },
+    { answer: "120", correctIncorrect: "Incorrect" },
+    { answer: "111", correctIncorrect: "Correct" },
+    { answer: "70", correctIncorrect: "Incorrect" },
+  ],
+},
+{
+  ID: 7,
+  category: "Maths",
+  question: "Which number makes the following number question correct? 75 ÷ ____ = 7.5",
+  answers: [
+    { answer: "10", correctIncorrect: "Correct" },
+    { answer: "100", correctIncorrect: "Incorrect" },
+    { answer: "1000", correctIncorrect: "Incorrect" },
+    { answer: "101", correctIncorrect: "Incorrect" },
+  ],
+},
+{
+  ID: 8,
+  category: "Maths",
+  question: "There are 5 balloons in a packet. there are 18 packets in a box. How many balloons are there altogether in the box?",
+  answers: [
+    { answer: "95", correctIncorrect: "Incorrect" },
+    { answer: "90", correctIncorrect: "Correct" },
+    { answer: "100", correctIncorrect: "Incorrect" },
+    { answer: "85", correctIncorrect: "Incorrect" },
+  ],
+},
+{
+  ID: 9,
+  category: "Maths",
+  question: "Which of these is not a multiple of 8? ",
+  answers: [
+    { answer: "72", correctIncorrect: "Incorrect" },
+    { answer: "32", correctIncorrect: "Incorrect" },
+    { answer: "88", correctIncorrect: "Incorrect" },
+    { answer: "68", correctIncorrect: "Correct" },
+  ],
+},
+{
+  ID: 10,
+  category: "Maths",
+  question: "What number is halfway between 1.4 and 2.1?",
+  answers: [
+    { answer: "1.8", correctIncorrect: "Incorrect" },
+    { answer: "1.7", correctIncorrect: "Incorrect" },
+    { answer: "1.75", correctIncorrect: "Correct" },
+    { answer: "2", correctIncorrect: "Incorrect" },
+  ],
+}
 ]

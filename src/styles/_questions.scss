@@ -1,105 +1,105 @@
-@use "./variables" as *;
+@use "./variables"as *;
 
 .quizPage__container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 80vh;
-        width: 80vw;
-        background-color: $quiz-background;
-        border-radius: 10px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        &--button{
+    width: 80vw;
+    border-radius: 10px;
+    background-color: $quiz-background;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    &--button {
         display: inline-block;
         width: 30vw;
         height: 7vh;
-        font-size: 12px;
+        padding: 10px;
         border: 2px solid $background-color;
         border-radius: 10px;
         background-color: white;
         color: $background-color;
-        padding: 10px;
         font-family: $font-body;
-        }
+        font-size: 20px;
+    }
 }
 
-.questions{
+.questions {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     height: 25%;
 
 
-    &--category{
+    &--category {
         text-align: center;
-        justify-content: flex-start;
-        font-size: 24px;
+        font-size: 28px;
     }
 
-    &--question{
+    &--question {
         text-align: center;
-        font-size: 18px;
+        font-size: 22px;
     }
-
 }
 
 
 .answers__container {
     display: grid;
-    grid-template-areas: 
-    "option1 option2"
-    "option3 option4";
-    gap: 20px;
     justify-content: space-around;
-    padding: 5px;
-    height:33vh;
+    grid-template-areas:
+        "option1 option2"
+        "option3 option4";
+    gap: 20px;
+    padding: 20px;
+    height: 33vh;
 
-    &--options{
+    &--options {
         display: inline-block;
         height: 10vh;
         width: 32vw;
-        border: 1px solid white;
         padding: 5px;
+        border: 1px solid white;
         border-radius: 15px;
+        box-shadow: 7px 5px 5px black;
         background-color: $answer-color;
         font-size: 20px;
         font-family: $font-body;
-        box-shadow: 7px 5px 5px black;
-    }
+   }
 
-    &--option1{
+    &--option1 {
         grid-area: option1;
-        padding: 10px;
     }
 
-    &--option2{
+    &--option2 {
         grid-area: option2;
     }
 
-    &--option3{
+    &--option3 {
         grid-area: option3;
     }
 
-    &--option4{
+    &--option4 {
         grid-area: option4;
     }
 
 }
 
 .quiz__timer {
-    font-size: 24px;
+    font-size: 30px;
+    font-weight: bolder;
     text-align: center;
-    padding: 20px 0;
+    padding: 20px;
+    color: black;
 }
 
 @media screen and (min-width: 768px) {
     .answers__container {
 
-  
-    
-        &--options{
+        &--options {
             height: 12vh;
             width: 35vw;
         }
-}
+    }
 }
