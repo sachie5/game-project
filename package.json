@@ -3,13 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://sachie5.github.io/game-project",
+  "author": "sacha-mccormack",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.6.4",
+    "gh-pages": "^6.1.0",
     "sass": "^1.69.5",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"

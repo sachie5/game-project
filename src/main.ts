@@ -8,7 +8,7 @@ let counter: number = 0;
 let timeStop: boolean = false;
 let timer: number = 0;
 let questionsArr: Quiz[] = [];
-let currentQuestion: Answers [] = [];
+let currentQuestion: Answers[] = [];
 
 const quizBackground = document.querySelector<HTMLElement>(".quiz");
 const startPage = document.querySelector<HTMLElement>(".quiz__start");
@@ -61,7 +61,7 @@ if (
   !endPage ||
   !nextButton ||
   !endImage ||
-  !endScore 
+  !endScore
 ) {
   throw new Error("Issue with selector");
 }
@@ -69,23 +69,25 @@ if (
 const chooseCategory = () => {
   startPage.style.display = "none";
   categoryPage.style.display = "flex";
-  playerNameInput.value.trim()  === ""
-    ? playerNameInput.value = "Player One"
+  playerNameInput.value.trim() === ""
+    ? (playerNameInput.value = "Player One")
     : playerNameInput.value;
-    
+
   playerScoreInput.innerText = `${playerNameInput.value}:`;
   //Easter Egg
-  switch (playerNameInput.value.trim()){
+  switch (playerNameInput.value.trim()) {
     case "Naruto":
-      questionPage.style.backgroundImage = "url(https://wallpapercave.com/wp/wp4068637.jpg)";
+      questionPage.style.backgroundImage =
+        "url(https://wallpapercave.com/wp/wp4068637.jpg)";
       questionBackground.style.backgroundColor = "#FFFFFF";
       quizTimer.style.textAlign = "right";
       break;
     case "Egg":
-      questionPage.style.backgroundImage = "url(https://i0.wp.com/ctrlcurate.com/wp-content/uploads/2016/04/photo-template.jpg?resize=600%2C800&ssl=1)";
+      questionPage.style.backgroundImage =
+        "url(https://i0.wp.com/ctrlcurate.com/wp-content/uploads/2016/04/photo-template.jpg?resize=600%2C800&ssl=1)";
       questionBackground.style.backgroundColor = "#FFFFFF";
       quizTimer.style.textAlign = "";
-     break;
+      break;
     default:
       questionPage.style.backgroundImage = "";
       questionBackground.style.backgroundColor = "";
@@ -120,7 +122,7 @@ const startQuiz = (event: Event) => {
   clickedButton.innerText === "Grammar"
     ? (questionsArr = [...grammarQuestions])
     : (questionsArr = [...mathQuestions]);
-  questionsArr = questionsArr.sort((a, b) => 0.5 - Math.random());
+  questionsArr = questionsArr.sort((_a, _b) => 0.5 - Math.random());
   //Score
   playerScoreInput.innerHTML += `<span class= score> ${score}</span>`;
   //Timer
@@ -178,7 +180,6 @@ const nextQuestion = () => {
     questionCategory.innerText = `${questionsArr[questionIndex].category}`;
     question.innerText = `${questionsArr[questionIndex].question}`;
     currentQuestion = questionsArr[questionIndex].answers;
-
     answers.forEach((answer, i) => {
       answer.style.backgroundColor = `#FFF275`;
       answer.innerText = `${currentQuestion[i].answer}`;
@@ -224,10 +225,12 @@ const restartQuiz = () => {
 
 const fireConfetti = () => {
   const options: Options = {
-    particleCount: 60,
+    particleCount: 100,
     angle: Math.random() * 360,
-    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-    spread: Math.random() * 360,
+    colors: ["#4D9DE0", "#E15554", "#E1BC29", "#3BB273", "#7768AE"],
+    spread: 360,
+    gravity: 0.5,
+    shapes: ["circle", "star"]
   };
   return confetti(options);
 };
